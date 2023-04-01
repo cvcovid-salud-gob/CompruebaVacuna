@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <main class="page" style="width:100%;"></main>
+
+    <section class="section section-intro flag-banner" style="background: transparent url(https://www.gob.mx/cms/uploads/identity/image/30930/background_34.jpg) no-repeat center center; background-size: cover; top:0; height:200px">
+        <div id="videoContainer" class="video-container" style="position: absolute; top: 0;"></div>
+        <div class="container">
+            <div class="section-intro__content" style="color: transparent;">
+                <h1>-</h1>
+                <p class="text-border">-</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div id="divcurp" class="mainbox col-md-8 col-md-offset-2 col-sm-8 " style=" margin-top:50px; display:flex; align-items: center;">
+            <div class="panel panel-default" style=" width: 100%;">
+                <div class="panel-heading">
+                    <div class="panel-title">Validación de Vacunación:</div>
+                </div>
+                <div style="padding-top:30px" class="panel-body">
+
+
+                    <div id="tieneCurpContent">
+                        <div style="margin-bottom: 25px" class="input-group">
+
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="id1" type="text" class="form-control" name="id1" placeholder="Introducir Clave de Vacunación" value="0f91d617-a056-4cd6-96df-0a7bc41c3882">
+
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="id2" type="text" class="form-control" name="id2" placeholder="Introducir Código de Vacunación" value="1680327419042">
+                            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <div style="margin-top:10px" class="form-group">
+                            <div class="col-sm-12 controls">
+                                <div class="rc-anchor-logo-img rc-anchor-logo-img-portrait"></div>
+                                 
+                                <button type="button " class="btn btn-primary col-md-12" onclick="buscarInfo()" id="buscar">Buscar</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            var url_string = window.location.href; // www.test.com?filename=test
+            var url = new URL(url_string);
+            var paramValue = url.searchParams.get("id1");
+            var paramValue2 = url.searchParams.get("id2");
+
+            if (paramValue != null || paramValue2 != null) {
+                document.getElementById("id2").value = paramValue
+                document.getElementById("id1").value = paramValue2
+            }
+
+            function getCveVacunacion() {
+                return document.getElementById("id1").value
+
+            }
+
+            function getCodigo() {
+                return document.getElementById("id2").value
+            }
+
+
+            function buscarInfo() {
+                 swal({
+                            title: "QR. Valido: Para validar el Certificado, los siguientes datos deberán coincidir exactamente con los del documento presentado.",
+                            text:  "Fecha de emisión: 2023-03-31 23:36:59 \n\n CURP: PERJ990217HVZDNR06 \n\n Segundo apellido: RENDON \n\n Marca Dosis 1: Pfizer \n\n Sello digital: 0f91d617-a056-4cd6-96df-0a7bc41c3882",
+                            icon: "success"
+                        });
+               
+                
+            }
+        </script>
+
+</body>
+
+</html>
